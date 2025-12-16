@@ -19,7 +19,88 @@ $(function () {
 	setInterval(function () {
 		garden.render()
 	}, Garden.options.growSpeed)
+
+	// 移动端布局适配
+	if (clientWidth <= 768) {
+		$("#content").css({
+			"flex-direction": "column",
+			"width": "95%",
+			"height": "auto"
+		});
+		$("#loveHeart").css({"order": -1}); // 心形置顶
+	} else {
+		// 桌面端原有布局
+		$("#content").css("width", $loveHeart.width() + $("#code").width());
+		$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
+	}
+
+	// 2. 心形尺寸自适应
+	var heartSizeRatio = clientWidth <= 768 ? 0.6 : 1; // 移动端缩小比例
+	var a = $loveHeart.width() / 2 * heartSizeRatio;
+	var b = $loveHeart.height() / 2 - 55 * heartSizeRatio;
+
+	// 3. 窗口resize优化（移除强制刷新）
+	$(window).resize(function () {
+		if (clientWidth !== $(window).width() || clientHeight !== $(window).height()) {
+			// 仅重新计算尺寸，不刷新页面
+			adjustLayout();
+		}
+	});
+
+	function adjustLayout() {
+		// 重新计算心形位置和画布尺寸
+		gardenCanvas.width = $("#loveHeart").width();
+		gardenCanvas.height = $("#loveHeart").height();
+		// ...其他尺寸调整...
+	}
+
+	// 移动端心形比例动态计算
+	function calculateHeartSize() {
+		const screenWidth = $(window).width();
+		let heartWidth, heartHeight;
+
+		if (screenWidth <= 768) {
+			// 移动端：取屏幕宽度90%与最大宽度400px的较小值
+			heartWidth = Math.min(screenWidth * 0.9, 400);
+			heartHeight = heartWidth * (620 / 670); // 保持原始比例
+		} else {
+			// 桌面端：保持原始尺寸
+			heartWidth = 670;
+			heartHeight = 620;
+		}
+
+		// 应用尺寸
+		$loveHeart.css({
+			width: heartWidth + 'px',
+			height: heartHeight + 'px'
+		});
+
+		// 同步画布尺寸
+		gardenCanvas.width = heartWidth;
+		gardenCanvas.height = heartHeight;
+
+		// 重新计算偏移量（居中基准点）
+		offsetX = heartWidth / 2;
+		offsetY = heartHeight / 2 - 55 * (heartWidth / 670); // 按比例调整Y偏移
+	}
+
+	// 初始化时计算
+	calculateHeartSize();
+
+	// 窗口resize时重新计算
+	$(window).resize(function() {
+		calculateHeartSize();
+		garden.render(); // 重绘花园
+	});
+
+	// 添加触摸事件防止误触
+	$("#loveHeart").on("touchmove", function(e) {
+		e.preventDefault(); // 防止页面滚动
+	});
 });
+// 5. 移动端花朵密度调整
+Garden.options.density = clientWidth <= 768 ? 5 : 10; // 降低移动端密度
+Garden.options.bloomRadius = {min: 5, max: 8}; // 缩小花朵尺寸
 $(window).resize(function () {
 	var b = $(window).width();
 	var a = $(window).height();
@@ -29,10 +110,11 @@ $(window).resize(function () {
 });
 
 function getHeartPoint(c) {
+	const ratio = $("#loveHeart").width() / 670; // 基于原始宽度的缩放比例
 	var b = c / Math.PI;
-	var a = 19.5 * (16 * Math.pow(Math.sin(b), 3));
-	var d = -20 * (13 * Math.cos(b) - 5 * Math.cos(2 * b) - 2 * Math.cos(3 * b) - Math.cos(4 * b));
-	return new Array(offsetX + a, offsetY + d)
+	var a = 19.5 * ratio * (16 * Math.pow(Math.sin(b), 3));
+	var d = -20 * ratio * (13 * Math.cos(b) - 5 * Math.cos(2 * b) - 2 * Math.cos(3 * b) - Math.cos(4 * b));
+	return new Array(offsetX + a, offsetY + d);
 }
 
 function startHeartAnimation() {

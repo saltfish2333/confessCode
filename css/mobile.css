@@ -1,0 +1,66 @@
+/* 移动端专属样式 (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* 增大基础字号 */
+        background: #fdc9d1;
+        overflow-x: hidden; /* 防止横向滚动 */
+    }
+
+    /* 内容容器强化居中 */
+    #content {
+        width: 95% !important;
+        height: auto !important;
+        margin: 20px auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;             /* 子元素水平居中 */
+        justify-content: center;         /* 子元素垂直居中 */
+    }
+
+    #code, #loveHeart {
+        float: none !important; /* 清除浮动 */
+        width: 100% !important; /* 全屏宽度 */
+        height: auto !important;
+        margin: 20px 0 !important;
+        position: relative;
+    }
+
+    /* 保持心形区域比例居中 */
+    #loveHeart {
+        float: none !important;
+        width: 90% !important;          /* 使用相对宽度而非100% */
+        max-width: 400px !important;    /* 移动端最大宽度限制（原670px的60%） */
+        height: auto !important;        /* 高度自适应 */
+        aspect-ratio: 670/620 !important; /* 保持原始宽高比（1.08:1） */
+        margin: 20px auto !important;    /* 水平居中关键 */
+        position: relative;
+        order: -1;                      /* 保持心形置顶 */
+    }
+
+    /* 画布尺寸同步修正 */
+    #garden {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* 文字区域居中优化 */
+    #words {
+        width: 90% !important;
+        font-size: 18px !important;
+        position: absolute;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important; /* 双重居中保障 */
+        text-align: center !important;
+    }
+
+    #elapseClock {
+        font-size: 16px !important;
+    }
+
+    #code {
+        font-size: 12px !important;
+        height: 300px !important; /* 限制代码区高度 */
+        overflow-y: auto; /* 添加滚动条 */
+    }
+}
