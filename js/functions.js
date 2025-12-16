@@ -19,7 +19,7 @@ $(function () {
 	setInterval(function () {
 		garden.render()
 	}, Garden.options.growSpeed)
-
+	$("#content").attr("style", "");  // 清除所有内联样式（关键）
 	// 移动端布局适配
 	if (clientWidth <= 768) {
 		$("#content").css({
@@ -32,8 +32,13 @@ $(function () {
 		// 桌面端原有布局
 		$("#content").css("width", $loveHeart.width() + $("#code").width());
 		$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	}
-
+	}/*
+	if (clientWidth > 768) {
+		$("#content").css("width", $loveHeart.width() + $("#code").width());
+		$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
+		$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2 - 50, 10));
+		$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	}*/
 	// 2. 心形尺寸自适应
 	var heartSizeRatio = clientWidth <= 768 ? 0.6 : 1; // 移动端缩小比例
 	var a = $loveHeart.width() / 2 * heartSizeRatio;
@@ -94,9 +99,19 @@ $(function () {
 	});
 
 	// 添加触摸事件防止误触
-	$("#loveHeart").on("touchmove", function(e) {
-		e.preventDefault(); // 防止页面滚动
+	$("#loveHeart").bind("touchmove", function(e) {
+		e.preventDefault();
 	});
+	adjustCodePosition();
+	var codeElement = document.getElementById("code");
+	if (codeElement) {
+		codeElement.scrollTop = codeElement.scrollHeight;
+	}
+	if ($(window).width() <= 768) {
+		// 计算底部安全区高度（适配全面屏）
+		const safeAreaBottom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || 0);
+		$("#loveHeart").css("margin-bottom", safeAreaBottom + 20 + "px"); // 安全区+额外间距
+	}
 });
 // 5. 移动端花朵密度调整
 Garden.options.density = clientWidth <= 768 ? 5 : 10; // 降低移动端密度
@@ -108,7 +123,18 @@ $(window).resize(function () {
 		location.replace(location)
 	}
 });
+function adjustCodePosition() {
+	const isMobile = $(window).width() <= 768;
 
+	if (isMobile) {
+		// 移动端：贴顶显示（margin-top=0）
+		$("#code").css("margin-top", "0");
+		$("#code").css("margin-bottom", "20px"); /* 与下方分隔 */
+	} else {
+		// 桌面端：保留原始居中逻辑
+		$("#code").css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
+	}
+}
 function getHeartPoint(c) {
 	const ratio = $("#loveHeart").width() / 670; // 基于原始宽度的缩放比例
 	var b = c / Math.PI;
@@ -148,23 +174,35 @@ function startHeartAnimation() {
 (function (a) {
 	a.fn.typewriter = function () {
 		this.each(function () {
-			var d = a(this), c = d.html(), b = 0;
-			d.html("");
+			var d = a(this); // jQuery对象
+			var domElement = this; // 原生DOM元素
+			var c = d.html(); // 原始内容（含HTML标签）
+			var b = 0; // 字符索引
+			d.html(""); // 清空容器
 			var e = setInterval(function () {
 				var f = c.substr(b, 1);
 				if (f == "<") {
-					b = c.indexOf(">", b) + 1
+					b = c.indexOf(">", b) + 1; // 跳过HTML标签
 				} else {
-					b++
+					b++; // 普通字符递增
 				}
-				d.html(c.substring(0, b) + (b & 1 ? "_" : ""));
+				// 拼接当前内容（含光标闪烁）
+				var currentContent = c.substring(0, b) + (b & 1 ? "_" : "");
+				d.html(currentContent);
+
+				// 关键：自动滚动到底部（原生DOM操作）
+				domElement.scrollTop = domElement.scrollHeight;
+
+				// 内容完成，清除定时器并显示完整内容
 				if (b >= c.length) {
-					clearInterval(e)
+					clearInterval(e);
+					d.html(c); // 显示完整内容（无光标）
+					domElement.scrollTop = domElement.scrollHeight; // 最终定位
 				}
-			}, 75)
+			}, 10); // 打字速度（75ms/字符）
 		});
-		return this
-	}
+		return this;
+	};
 })(jQuery);
 
 function timeElapse(c) {
@@ -185,7 +223,7 @@ function timeElapse(c) {
 	if (f < 10) {
 		f = "0" + f
 	}
-	var a = '<span class="digit">' + g + '</span> days <span class="digit">' + b + '</span> hours <span class="digit">' + d + '</span> minutes <span class="digit">' + f + "</span> seconds";
+	var a = '<span class="digit">' + g + '</span> 天 <span class="digit">' + b + '</span> 时 <span class="digit">' + d + '</span> 分 <span class="digit">' + f + "</span> 秒";
 	$("#elapseClock").html(a)
 }
 
@@ -197,14 +235,37 @@ function showMessages() {
 }
 
 function adjustWordsPosition() {
-	$("#words").css("position", "absolute");
-	$("#words").css("top", $("#garden").position().top + 195);
-	$("#words").css("left", $("#garden").position().left + 70)
+	const isMobile = $(window).width() <= 768;
+
+	if (isMobile) {
+		// 移动端：强制居中（覆盖媒体查询的静态样式）
+		$("#words").css({
+			"position": "absolute",
+			"top": "50%",
+			"left": "50%",
+			"transform": "translate(-50%, -50%)",
+			"width": "80%",
+			"text-align": "center"
+		});
+	} else {
+		// 桌面端：保留原始逻辑（基于#garden位置计算）
+		$("#words").css("position", "absolute");
+		$("#words").css("top", $("#garden").position().top + 195);
+		$("#words").css("left", $("#garden").position().left + 70);
+		$("#words").css("width", "500px");
+		$("#words").css("text-align", "left");
+	}
 }
 
-function adjustCodePosition() {
-	$("#code").css("margin-top", ($("#garden").height() - $("#code").height()) / 2)
+// 补充：根字体大小动态缩放（增强适应性）
+function setRootFontSize() {
+	const screenWidth = $(window).width();
+	const baseSize = screenWidth <= 768 ? 14 : 12; // 移动端基础字体更大
+	$("html").css("font-size", baseSize + "px");
 }
+// 初始化时调用
+setRootFontSize();
+$(window).resize(setRootFontSize); // 窗口变化时更新
 
 function showLoveU() {
 	$("#loveu").fadeIn(3000)

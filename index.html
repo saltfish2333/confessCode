@@ -24,44 +24,61 @@
 	<div id="mainDiv">
 		<div id="content">
 			<div id="code">
-				<span class="comments">##</span><br />
-				<span class="comments"># I am a programmer,</span><br />
-				<span class="comments"># so I write code to celebrate Valentine's Day in coder's way.</span><br />
-				<span class="comments">##</span><br />
-				i = Boy(<span class="string">"小孙同学"</span>);<br />
-				u = Girl(<span class="string">"小爱同学"</span>);<br />
-				<span class="comments"># 2 14, 2021, I meet you because of PyCon 2022. </span><br />
-				i.meet(u)<br />
-				<span class="comments"># Afterwards, I confessed to you. </span><br />
-				i.confess(u)<br />
-				<span class="comments"># 2 14, 2022, You became my girlfriend.</span><br />
-				u.accepted(i)<br />
+				<span class="comments"># I express my love in the most authentic way - through code.</span><br />
+				i = Boy(<span class="string">"小钟同学"</span>);<br />
+				u = Girl(<span class="string">"小儒同学"</span>);<br />
+				<br />
+				<span class="comments"># First Encounter: Lijiang,Yunnan</span><br />
+				first_meet = {<br />
+				&nbsp;&nbsp;location: <span class="string">"Lijiang.Yunnan"</span>,<br />
+				&nbsp;&nbsp;date: <span class="string">"2025-10-08"</span>,<br />
+				&nbsp;&nbsp;weather: <span class="string">"sunny_with_blossoms"</span>,<br />
+				&nbsp;&nbsp;feeling: {<span class="string">"restrained_crush"</span>, <span class="string">"心动但克制"</span>}<br />
+				};<br />
+				i.meet(u);<br />
+				print(<span class="string">"在丽江古城里，我第一次见到你"</span>);<br />
+				<br />
+				<span class="comments"># Second Reunion: Shanghai</span><br />
+				second_reunion = {<br />
+				&nbsp;&nbsp;location: <span class="string">"Shanghai"</span>,<br />
+				&nbsp;&nbsp;date: <span class="string">"2025-11-14"</span>,<br />
+				&nbsp;&nbsp;feeling: {<span class="string">"restless_affection"</span>, <span class="string">"喜欢变得躁动"</span>}<br />
+				};<br />
+				reunion(u,i);<br />
+				print(<span class="string">"在上海的重逢，是必然不是偶然"</span>);<br />
+				<br />
+				<span class="comments"># Third Confession: Suzhou</span><br />
+				third_encounter = {<br />
+				&nbsp;&nbsp;location: <span class="string">"Suzhou.Jiangsu"</span>,<br />
+				&nbsp;&nbsp;date: <span class="string">"2025-11-15"</span>,<br />
+				&nbsp;&nbsp;moment: <span class="string">"moonlight_by_river"</span>,<br />
+				&nbsp;&nbsp;action: {<span class="string">"confess_love"</span>, <span class="string">"情不自禁"</span>},<br />
+				&nbsp;&nbsp;result: <span class="string">"fell_in_love_completely"</span><br />
+				};<br />
+				i.confess(u);<br />
+				u.accepted(i);<br />
+				print(<span class="string">"在苏州的月光下，我说出了心里话"</span>);<br />
+				<br />
 				<span class="comments"># Since then, we spent harmony happiness life every day.</span><br />
-				happy(u, i)<br />
-				<span class="comments"># We enjoy studying together.</span><br />
-				study(u, i)<br />
-				<span class="comments"># We enjoy cuisine together.</span><br />
-				dine(u, i)<br />
-				<span class="comments"># We enjoy appointment together.</span><br />
-				appoint(u, i)<br />
-				<span class="comments"># We enjoy vacation together.</span><br />
-				vacation(u, i)<br />
-				<span class="comments"># Sometimes there are a few conflicts between us.</span><br />
-				conflict(u, i, sometimes=<span class="keyword">True</span>)<br />
-				<span class="comments"># But we are getting more and more in harmony together.</span><br />
-				u.in_harmony_with(i) <br />
-				i.in_harmony_with(u) <br />
-				<span class="comments"># You are the greatest love of my life.</span><br />
-				while <span class="keyword">True</span>:<br />
-				<span class="placeholder"></span><span class="keyword">if</span> u.with(i):<br />
-				<span class="placeholder"></span><span class="placeholder"></span>u = everything<br />
-				<span class="placeholder"></span><span class="keyword">else</span>:<br />
-				<span class="placeholder"></span><span class="placeholder"></span>everything = u<br />
-				<span class="comments"># Waiting me marries you, we will be the happiest couple in the
-					world.</span><br />
-				i.marry(u, in_the_future=<span class="keyword">True</span>)<br />
-				i.live_happily_forever_with(u)<br />
-				<span class="comments"># I love you forever.</span><br />
+				love_status = <span class="string">"异地且热恋"</span>;<br />
+				happiness_level = 100;<br />
+				physical_distance = <span class="string">"+♾️"</span>;<br />
+				heart_distance = <span class="string">"0"</span>;<br />
+				print(<span class="string">"物理的尺度能丈量山海，但心的距离才是真爱的度量衡"</span>);<br />
+				<br />
+				<span class="comments"># We may face many challenges in the future.</span><br />
+				challenges = [<span class="string">"三个月分手高峰期"</span>, <span class="string">"偶尔的冷淡"</span>, <span class="string">"八字不合???"</span>, <span class="string">"三年之痛"</span>, <span class="string">"七年之痒"</span>];<br />
+				print(<span class="string">"我知道未来会有考验..."</span>);<br />
+				<br />
+				<span class="comments"># But my promise is</span><br />
+				<span class="keyword">for</span> challenge <span class="keyword">in</span> challenges:<br />
+				print(<span class="string">f"无论遇到{challenge}，我都会紧牵你手"</span>);<br />
+				<br />
+				<span class="comments"># Last vow</span><br />
+				<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:<br />
+				&nbsp;&nbsp;result = love_algorithm(u, i);<br />
+				&nbsp;&nbsp;print(<span class="string">f"执行结果：{result}"</span>);<br />
+				&nbsp;&nbsp;print(<span class="string">"程序永恒运行中..."</span>);<br />
 			</div>
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
@@ -70,10 +87,10 @@
 						Qian, I have fallen in love with you for
 						<div id="elapseClock"></div>
 					</div>
-					<div id="loveu">
-						Love u forever and ever.<br />
-						<div class="signature"></div>
-					</div>
+<!--					<div id="loveu">-->
+<!--						Love u forever and ever.<br />-->
+<!--						<div class="signature"></div>-->
+<!--					</div>-->
 				</div>
 			</div>
 		</div>

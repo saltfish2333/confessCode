@@ -67,8 +67,10 @@ body {
 #code {
     float: left;
     width: 440px;
-    margin-top: 60px !important;
-    height: 400px;
+    margin-top: 60px;
+    height: auto; /* 取消固定高度 */
+    max-height: 400px; /* 桌面端最大高度 */
+    overflow-y: auto; /* 启用滚动条 */
     color: #333;
     font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
     font-size: 12px

@@ -1,42 +1,66 @@
 /* 移动端专属样式 (max-width: 768px) */
 @media screen and (max-width: 768px) {
+    html {
+        font-size: 14px; /* 移动端基础字体（可根据屏幕宽度进一步调整） */
+    }
     body {
-        font-size: 14px; /* 增大基础字号 */
-        background: #fdc9d1;
-        overflow-x: hidden; /* 防止横向滚动 */
+        font-size: 1rem; /* 继承根字体 */
     }
 
     /* 内容容器强化居中 */
     #content {
         width: 95% !important;
-        height: auto !important;
-        margin: 20px auto !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;             /* 子元素水平居中 */
-        justify-content: center;         /* 子元素垂直居中 */
+        height: auto !important; /* 高度自适应 */
+        margin: 20vh auto !important; /* 贴顶居中 */
+        padding: 0 !important; /* 清除内边距 */
+        display: flex !important; /* 强制Flex布局 */
+        flex-direction: column !important; /* 上下排列 */
+        align-items: center !important; /* 水平居中 */
+        justify-content: flex-start !important; /* 顶部开始 */
+        gap: 20px !important; /* 子元素间距（防重叠） */
     }
-
-    #code, #loveHeart {
-        float: none !important; /* 清除浮动 */
-        width: 100% !important; /* 全屏宽度 */
-        height: auto !important;
-        margin: 20px 0 !important;
-        position: relative;
+    #code {
+        float: none !important;
+        width: 100% !important;
+        height: auto !important; /* 取消固定高度（关键） */
+        max-height: 40vh !important; /* 移动端最大高度（视口40%） */
+        min-height: 200px !important; /* 最小高度（避免过矮） */
+        overflow-y: auto !important; /* 强制显示滚动条 */
+        margin: 0 0 20px 0 !important; /* 与loveheart间距 */
+        order: 1; /* 确保在上方 */
+        font-size: 12px !important;
+        background: rgba(255,255,255,0.8); /* 半透明背景（可选） */
+        border-radius: 8px; /* 圆角（可选） */
     }
-
-    /* 保持心形区域比例居中 */
     #loveHeart {
         float: none !important;
-        width: 90% !important;          /* 使用相对宽度而非100% */
-        max-width: 400px !important;    /* 移动端最大宽度限制（原670px的60%） */
-        height: auto !important;        /* 高度自适应 */
-        aspect-ratio: 670/620 !important; /* 保持原始宽高比（1.08:1） */
-        margin: 20px auto !important;    /* 水平居中关键 */
+        width: 90% !important;
+        max-width: 400px !important;
+        height: auto !important;
+        aspect-ratio: 670/620 !important; /* 保持心形比例 */
+        margin: 0 auto 20px auto !important; /* 底部留白 */
+        order: 2; /* 确保在第二位置（下方） */
         position: relative;
-        order: -1;                      /* 保持心形置顶 */
     }
 
+    /* 清除LoveHeart的置顶优先级（关键） */
+    #loveHeart {
+        order: 2 !important; /* 覆盖之前的order: -1 */
+    }
+    /* 全局样式补充（防止浮动影响） */
+    #code, #loveHeart {
+        float: none !important; /* 强制清除浮动 */
+        box-sizing: border-box; /* 包含padding和border */
+    }
+
+    /* Code部分溢出处理 */
+    #code {
+        /*max-height: 300px; !* 限制最大高度（可选） *!*/
+        overflow-y: auto; /* 内容过长时显示滚动条 */
+        /*padding: 10px; !* 内边距（可选） *!*/
+        background: rgba(255,255,255,0.8); /* 半透明背景（可选） */
+        border-radius: 8px; /* 圆角（可选） */
+    }
     /* 画布尺寸同步修正 */
     #garden {
         width: 100% !important;
@@ -45,22 +69,45 @@
 
     /* 文字区域居中优化 */
     #words {
-        width: 90% !important;
-        font-size: 18px !important;
-        position: absolute;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important; /* 双重居中保障 */
-        text-align: center !important;
+        max-width: 80% !important; /* 随屏幕宽度缩放 */
+        width: 80% !important;
+        font-size: 0.6rem !important; /* 相对单位 */
+        line-height: 1.5 !important; /* 行间距自适应 */
     }
 
     #elapseClock {
-        font-size: 16px !important;
+        font-size: 0.8rem !important;
+        margin: 0.5rem 0 !important; /* 用rem替代固定px */
+    }
+    #elapseClock .digit {
+        font-size: 1rem !important; /* 数字放大（1.5×14=21px） */
+        margin: 0 0.2rem !important; /* 数字间距用rem */
     }
 
     #code {
+        margin-top: 0px;
         font-size: 12px !important;
         height: 300px !important; /* 限制代码区高度 */
         overflow-y: auto; /* 添加滚动条 */
+    }
+    #messages {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important; /* 文字居中 */
+        margin: 0 0 0.8rem 0 !important; /* 底部间距用rem（1rem=14px） */
+    }
+    #messages div {
+        font-size: 0.8rem !important; /* 相对根字体缩放（1.2×14=16.8px） */
+    }
+    #loveu {
+        text-align: center !important;
+        margin: 1rem 0 0 0 !important; /* 顶部间距用rem（1rem=14px） */
+        padding: 0.5rem !important; /* 内边距用rem */
+        font-size: 1rem !important; /* 相对缩放（1.4×14=19.6px） */
+        display: none; /* 保持初始隐藏 */
+    }
+    #loveu .signature {
+        margin-top: 0.5rem !important; /* 签名间距用rem */
+        font-size: 0.8rem !important; /* 签名缩放（1.2×14=16.8px） */
     }
 }
