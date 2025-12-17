@@ -19,15 +19,17 @@ $(function () {
 	setInterval(function () {
 		garden.render()
 	}, Garden.options.growSpeed)
-	$("#content").attr("style", "");  // 清除所有内联样式（关键）
+	// $("#content").attr("style", "");  // 清除所有内联样式（关键）
 	// 移动端布局适配
 	if (clientWidth <= 768) {
 		$("#content").css({
 			"flex-direction": "column",
 			"width": "95%",
-			"height": "auto"
+			"height": "auto",
 		});
-		$("#loveHeart").css({"order": -1}); // 心形置顶
+		$("#loveHeart").css({
+			"order": -1
+		}); // 心形置顶
 	} else {
 		// 桌面端原有布局
 		$("#content").css("width", $loveHeart.width() + $("#code").width());
@@ -85,7 +87,7 @@ $(function () {
 		gardenCanvas.height = heartHeight;
 
 		// 重新计算偏移量（居中基准点）
-		offsetX = heartWidth / 2;
+		offsetX = heartWidth / 2 ;
 		offsetY = heartHeight / 2 - 55 * (heartWidth / 670); // 按比例调整Y偏移
 	}
 
@@ -128,7 +130,8 @@ function adjustCodePosition() {
 
 	if (isMobile) {
 		// 移动端：贴顶显示（margin-top=0）
-		$("#code").css("margin-top", "0");
+		$("#code").css("margin-top", "20px");
+		$("#code").css("margin-left", "10px");
 		$("#code").css("margin-bottom", "20px"); /* 与下方分隔 */
 	} else {
 		// 桌面端：保留原始居中逻辑
@@ -244,7 +247,7 @@ function adjustWordsPosition() {
 			"top": "50%",
 			"left": "50%",
 			"transform": "translate(-50%, -50%)",
-			"width": "80%",
+			"width": "100%",
 			"text-align": "center"
 		});
 	} else {
