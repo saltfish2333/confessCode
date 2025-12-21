@@ -1,136 +1,41 @@
-<!DOCTYPE HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-	<meta name="title" content="小孙同学">
-	<meta name="github" content="https://github.com/sun0225SUN/Awesome-Love-Code">
-	<meta name="describe" content="收集不易，您的star是我坚持的动力，同时也欢迎各位PR哦! ">
-	<link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/img/20210715233345.png">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital.ttf') format("truetype");
-		}
-	</style>
-	<link href="css/default.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/garden.js"></script>
-	<script type="text/javascript" src="js/functions.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>给小儒同学的表白</title>
+    <link rel="stylesheet" href="css/confess.css"> <!-- 新增样式文件 -->
 </head>
-
 <body>
-	<div id="mainDiv">
-		<div id="content">
-			<div id="code">
-				<span class="comments"># I express my love in the most authentic way</span><br />
-				<span class="comments"># - through code.</span><br />
-				i = Boy(<span class="string">"小钟同学"</span>);<br />
-				u = Girl(<span class="string">"小儒同学"</span>);<br />
-				<br />
-				<span class="comments"># First Encounter: Lijiang,Yunnan</span><br />
-				first_meet = {<br />
-				&nbsp;&nbsp;location: <span class="string">"Lijiang.Yunnan"</span>,<br />
-				&nbsp;&nbsp;date: <span class="string">"2025-10-08"</span>,<br />
-				&nbsp;&nbsp;weather: <span class="string">"sunny_with_blossoms"</span>,<br />
-				&nbsp;&nbsp;feeling: {<span class="string">"restrained_crush"</span>, <span class="string">"心动但克制"</span>}<br />
-				};<br />
-				i.meet(u);<br />
-				print(<span class="string">"在丽江古城里，我第一次见到你"</span>);<br />
-				<br />
-				<span class="comments"># Second Reunion: Shanghai</span><br />
-				second_reunion = {<br />
-				&nbsp;&nbsp;location: <span class="string">"Shanghai"</span>,<br />
-				&nbsp;&nbsp;date: <span class="string">"2025-11-14"</span>,<br />
-				&nbsp;&nbsp;feeling: {<span class="string">"restless_affection"</span>, <span class="string">"喜欢变得躁动"</span>}<br />
-				};<br />
-				reunion(u,i);<br />
-				print(<span class="string">"在上海的重逢，是必然不是偶然"</span>);<br />
-				<br />
-				<span class="comments"># Third Confession: Suzhou</span><br />
-				third_encounter = {<br />
-				&nbsp;&nbsp;location: <span class="string">"Suzhou.Jiangsu"</span>,<br />
-				&nbsp;&nbsp;date: <span class="string">"2025-11-15"</span>,<br />
-				&nbsp;&nbsp;moment: <span class="string">"moonlight_by_river"</span>,<br />
-				&nbsp;&nbsp;action: {<span class="string">"confess_love"</span>, <span class="string">"情不自禁"</span>},<br />
-				&nbsp;&nbsp;result: <span class="string">"fell_in_love_completely"</span><br />
-				};<br />
-				i.confess(u);<br />
-				u.accepted(i);<br />
-				print(<span class="string">"在苏州的月光下，我说出了心里话"</span>);<br />
-				<br />
-				<span class="comments"># Since then, we spent harmony happiness life </span><br />
-				<span class="comments"># every day.</span><br />
-				love_status = <span class="string">"异地且热恋"</span>;<br />
-				happiness_level = 100;<br />
-				physical_distance = <span class="string">"+♾️"</span>;<br />
-				heart_distance = <span class="string">"0"</span>;<br />
-				print(<span class="string">"物理的尺度能丈量山海，但心的距离才是真爱的度量衡"</span>);<br />
-				<br />
-<!--				<span class="comments"># We may face many challenges in the future.</span><br />-->
-<!--				challenges = [<span class="string">"三个月分手高峰期"</span>, <span class="string">"偶尔的冷淡"</span>, <span class="string">"八字不合???"</span>, <span class="string">"三年之痛"</span>, <span class="string">"七年之痒"</span>];<br />-->
-<!--				print(<span class="string">"我知道未来会有考验..."</span>);<br />-->
-<!--				<br />-->
-<!--				<span class="comments"># But my promise is</span><br />-->
-<!--				<span class="keyword">for</span> challenge <span class="keyword">in</span> challenges:<br />-->
-<!--				print(<span class="string">f"无论遇到{challenge}，我都会紧牵你手"</span>);<br />-->
-<!--				<br />-->
-				<span class="comments"># Last vow</span><br />
-				<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:<br />
-				&nbsp;&nbsp;result = love_algorithm(u, i);<br />
-				&nbsp;&nbsp;print(<span class="string">f"执行结果：{result}"</span>);<br />
-				&nbsp;&nbsp;print(<span class="string">"程序永恒运行中..."</span>);<br />
-			</div>
-			<div id="loveHeart">
-				<canvas id="garden"></canvas>
-				<div id="words">
-					<div id="messages">
-						Qian, I have fallen in love with you for
-						<div id="elapseClock"></div>
-					</div>
-<!--					<div id="loveu">-->
-<!--						Love u forever and ever.<br />-->
-<!--						<div class="signature"></div>-->
-<!--					</div>-->
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var together = new Date();
-		// 此处月份介于 0 ~ 11 之间。用本地时间表示，如 8 月要用 7 表示。
-		together.setFullYear(2018, 10, 5);
-		together.setHours(15);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
+<!-- 初始表白页面（对应小程序confess-page） -->
+<div class="confess-container" id="confessPage">
+    <!-- 背景图片 -->
+    <img class="bg-image" id="bgImage" src="" alt="表白背景">
 
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-			document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 5000);
+    <!-- 内容区域 -->
+    <div class="content">
+        <!-- 表白文本 -->
+        <p class="confess-text" id="confessText">可以做我女朋友吗？</p>
 
-			timeElapse(together);
-			setInterval(function () {
-				timeElapse(together);
-			}, 500);
+        <!-- 按钮容器 -->
+        <div class="buttons-container">
+            <!-- 好按钮 -->
+            <button class="btn good-btn" id="goodBtn">好</button>
+            <!-- 不好按钮 -->
+            <button class="btn bad-btn" id="badBtn">不好</button>
 
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
+            <!-- 爱心动画容器 -->
+            <div class="heart-container" id="heartContainer"></div>
+        </div>
+
+        <!-- 烟花特效容器 -->
+        <div class="fireworks-container" id="fireworksContainer"></div>
+
+        <!-- 表情雨容器（爱心泡泡） -->
+        <div class="emoji-rain-container" id="emojiRainContainer"></div>
+    </div>
+</div>
+
+<script src="js/confess.js"></script> <!-- 新增交互逻辑 -->
 </body>
-
 </html>
