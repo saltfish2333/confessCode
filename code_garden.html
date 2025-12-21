@@ -53,20 +53,20 @@
 				&nbsp;&nbsp;location: <span class="string">"Suzhou.Jiangsu"</span>,<br />
 				&nbsp;&nbsp;date: <span class="string">"2025-11-15"</span>,<br />
 				&nbsp;&nbsp;moment: <span class="string">"moonlight_by_river"</span>,<br />
-				&nbsp;&nbsp;action: {<span class="string">"confess_love"</span>, <span class="string">"情不自禁"</span>},<br />
+				&nbsp;&nbsp;action: {<span class="string">"confess_love"</span>, <span class="string">"情难自禁"</span>},<br />
 				&nbsp;&nbsp;result: <span class="string">"fell_in_love_completely"</span><br />
 				};<br />
 				i.confess(u);<br />
 				u.accepted(i);<br />
 				print(<span class="string">"在苏州的月光下，我说出了心里话"</span>);<br />
 				<br />
-				<span class="comments"># Since then, we spent harmony happiness life </span><br />
-				<span class="comments"># every day.</span><br />
+				<span class="comments"># Since then, we spent harmony happiness life every day.</span><br />
+<!--				<span class="comments"># </span><br />-->
 				love_status = <span class="string">"异地且热恋"</span>;<br />
 				happiness_level = 100;<br />
 				physical_distance = <span class="string">"+♾️"</span>;<br />
-				heart_distance = <span class="string">"0"</span>;<br />
-				print(<span class="string">"物理的尺度能丈量山海，但心的距离才是真爱的度量衡"</span>);<br />
+				heart_distance = <span class="string">"-♾️"</span>;<br />
+				print(<span class="string">"地理距离无穷大，心的距离无限小"</span>);<br />
 				<br />
 <!--				<span class="comments"># We may face many challenges in the future.</span><br />-->
 <!--				challenges = [<span class="string">"三个月分手高峰期"</span>, <span class="string">"偶尔的冷淡"</span>, <span class="string">"八字不合???"</span>, <span class="string">"三年之痛"</span>, <span class="string">"七年之痒"</span>];<br />-->
@@ -85,9 +85,10 @@
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
-					<div id="messages">
-						Qian, I have fallen in love with you for
-						<div id="elapseClock"></div>
+					<div id="messages" align="center">
+						Miss Ru, I have fallen in love
+						<br />with you for
+						<div id="elapseClock" align="center"></div>
 					</div>
 <!--					<div id="loveu">-->
 <!--						Love u forever and ever.<br />-->
@@ -102,8 +103,8 @@
 		var offsetY = $("#loveHeart").height() / 2 - 55;
 		var together = new Date();
 		// 此处月份介于 0 ~ 11 之间。用本地时间表示，如 8 月要用 7 表示。
-		together.setFullYear(2018, 10, 5);
-		together.setHours(15);
+		together.setFullYear(2025, 10, 8);
+		together.setHours(23);
 		together.setMinutes(0);
 		together.setSeconds(0);
 		together.setMilliseconds(0);

@@ -129,17 +129,20 @@ function onGoodTap() {
     showFireworks();
     showEmojiRain();
 
+    state.currentImageIndex = 8;
+    updateBackground(); // 触发图片更新（淡入淡出效果）
+    elements.confessText.textContent = "嘿嘿，爱你哦！❤️";
     // 2. 更新按钮状态（隐藏不好按钮，放大好按钮）
     // state.goodBtnVisible = false;
     // state.badBtnVisible = false;
     setState({
-        // goodBtnVisible: false,  // 隐藏好按钮
+        goodBtnVisible: false,  // 隐藏好按钮
         badBtnVisible: false,   // 关键：隐藏不好按钮（核心修复）
-        goodBtnScale: 20,        // 好按钮放大（视觉上“填满屏幕”）
+        // goodBtnScale: 20,        // 好按钮放大（视觉上“填满屏幕”）
         showCodeGarden: true     // 标记切换到代码花园（可选）
     });
-    elements.badBtn.style.transform = `scale(${state.badBtnScale})`;
-    elements.goodBtn.style.transform = `scale(${state.goodBtnScale})`;
+    // elements.badBtn.style.transform = `scale(${state.badBtnScale})`;
+    // elements.goodBtn.style.transform = `scale(${state.goodBtnScale})`;
 
     // 3. 延迟1秒后跳转至原代码花园页面（用户提供的第一个index.html）
     setTimeout(() => {
@@ -168,6 +171,8 @@ function onBadTap() {
             goodBtnScale: 20        // 好按钮放大
         });
         // state.goodBtnScale = 20;
+        state.currentImageIndex = 8;
+        elements.confessText.textContent = "xxxx";
     }
     elements.badBtn.style.transform = `scale(${state.badBtnScale})`;
     elements.goodBtn.style.transform = `scale(${state.goodBtnScale})`;
