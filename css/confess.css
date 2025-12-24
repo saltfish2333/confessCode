@@ -1,4 +1,8 @@
 /* 基础样式（参考小程序wxss转换） */
+body {
+    margin: 0;
+    padding: 0;
+}
 .confess-container {
     position: relative;
     width: 100vw;
