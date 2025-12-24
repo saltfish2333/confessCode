@@ -12,10 +12,10 @@ $(function () {
 	gardenCtx = gardenCanvas.getContext("2d");
 	gardenCtx.globalCompositeOperation = "lighter";
 	garden = new Garden(gardenCtx, gardenCanvas);
-	$("#content").css("width", $loveHeart.width() + $("#code").width());
-	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2 - 50, 10));
-	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	$("#content").css("width", Math.max($loveHeart.width() , $("#code").width()));
+	$("#content").css("height", $loveHeart.height()+$("#code").height());
+	// $("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2 - 50, 10));
+	// $("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
 	setInterval(function () {
 		garden.render()
 	}, Garden.options.growSpeed)
@@ -68,7 +68,7 @@ $(function () {
 
 		if (screenWidth <= 768) {
 			// 移动端：取屏幕宽度90%与最大宽度400px的较小值
-			heartWidth = Math.min(screenWidth * 0.9, 400);
+			heartWidth = Math.min(screenWidth * 0.8, 400);
 			heartHeight = heartWidth * (620 / 670); // 保持原始比例
 		} else {
 			// 桌面端：保持原始尺寸

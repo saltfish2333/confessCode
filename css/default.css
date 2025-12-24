@@ -50,7 +50,7 @@ body {
 
 #elapseClock .digit {
     font-family: "digit";
-    font-size: 18px
+    font-size: 16px
 }
 
 #loveu {
@@ -73,10 +73,10 @@ body {
 
 #code {
     float: left;
-    width: 440px;
+    width: 100vw;
     margin-top: 60px;
-    height: auto; /* 取消固定高度 */
-    max-height: 400px; /* 桌面端最大高度 */
+    height: 50vh; /* 取消固定高度 */
+    max-height: 50vh; /* 桌面端最大高度 */
     overflow-y: auto; /* 启用滚动条 */
     color: #333;
     font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";

@@ -24,7 +24,7 @@
         width: 100% !important;
         height: auto !important; /* 取消固定高度（关键） */
         max-height: 40vh !important; /* 移动端最大高度（视口40%） */
-        min-height: 200px !important; /* 最小高度（避免过矮） */
+        min-height: 1vh !important; /* 最小高度（避免过矮） */
         overflow-y: auto !important; /* 强制显示滚动条 */
         margin: 20px !important; /* 与loveheart间距 */
         order: 1; /* 确保在上方 */
