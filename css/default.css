@@ -73,7 +73,7 @@ body {
 
 #code {
     float: left;
-    width: 100vw;
+    width: 95vw;
     margin-top: 60px;
     height: 50vh; /* 取消固定高度 */
     max-height: 50vh; /* 桌面端最大高度 */
